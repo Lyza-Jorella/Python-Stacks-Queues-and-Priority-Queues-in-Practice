@@ -71,3 +71,14 @@ class Stack(Queue):
     def dequeue(self):
         return self._elements.pop()
 
+>>> from queues import Stack
+
+>>> lifo = Stack("1st", "2nd", "3rd")
+>>> for element in lifo:
+...     print(element)
+...
+3rd
+2nd
+1st
+
+
