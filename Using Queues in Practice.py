@@ -203,3 +203,14 @@ def breadth_first_search(graph, source, predicate):
     for node in breadth_first_traverse(graph, source):
         if predicate(node):
             return node
+
+def breadth_first_traverse(graph, source):
+    queue = Queue(source)
+    visited = {source}
+    for node in queue:
+        yield node
+        for neighbor in graph.neighbors(node):
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.enqueue(neighbor)
+
