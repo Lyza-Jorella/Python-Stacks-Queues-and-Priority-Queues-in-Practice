@@ -167,6 +167,18 @@ class PriorityQueue:
     def dequeue(self):
         return heappop(self._elements)[1]
 
+>>> messages.dequeue()
+'Brake pedal depressed'
+
+>>> messages.dequeue()
+'Hazard lights turned on'
+
+>>> messages.dequeue()
+'Windshield wipers turned on'
+
+>>> messages.dequeue()
+'Radio station tuned in'
+
 
 
 
