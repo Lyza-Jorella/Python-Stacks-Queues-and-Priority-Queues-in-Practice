@@ -194,6 +194,10 @@ Traceback (most recent call last):
   ...
 TypeError: '<' not supported between instances of 'Message' and 'Message'
 
+>>> messages = PriorityQueue()
+>>> messages.enqueue_with_priority(CRITICAL, wipers)
+>>> messages.enqueue_with_priority(IMPORTANT, hazard_lights)
+
 
 
 
