@@ -94,4 +94,15 @@ class Stack(Queue):
 >>> lifo.pop()
 '1st'
 
+>>> from heapq import heappush
+
+>>> fruits = []
+>>> heappush(fruits, "orange")
+>>> heappush(fruits, "apple")
+>>> heappush(fruits, "banana")
+
+>>> fruits
+['apple', 'orange', 'banana']
+
+
 
