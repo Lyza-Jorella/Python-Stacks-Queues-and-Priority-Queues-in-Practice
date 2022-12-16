@@ -297,3 +297,17 @@ def retrace(previous, source, destination):
 
     path.appendleft(source)
     return list(path)
+
+>>> from graph import shortest_path
+
+>>> " → ".join(city.name for city in shortest_path(graph, city1, city2))
+'Aberdeen → Dundee → Perth'
+
+>>> def by_latitude(city):
+...     return -city.latitude
+...
+>>> " → ".join(
+...     city.name
+...     for city in shortest_path(graph, city1, city2, by_latitude)
+... )
+'Aberdeen → Inverness → Perth'
