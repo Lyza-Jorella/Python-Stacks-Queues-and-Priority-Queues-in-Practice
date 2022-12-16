@@ -311,3 +311,10 @@ def retrace(previous, source, destination):
 ...     for city in shortest_path(graph, city1, city2, by_latitude)
 ... )
 'Aberdeen → Inverness → Perth'
+
+# graph.py
+
+# ...
+
+def connected(graph, source, destination):
+    return shortest_path(graph, source, destination) is not None
