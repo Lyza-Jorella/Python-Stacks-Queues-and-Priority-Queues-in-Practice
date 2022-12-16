@@ -49,3 +49,19 @@ def load_graph(filename, node_factory):
         (nodes[name1], nodes[name2], weights)
         for name1, name2, weights in graph.edges(data=True)
     )
+
+>>> from graph import City, load_graph
+
+>>> nodes, graph = load_graph("roadmap.dot", City.from_dict)
+
+>>> nodes["london"]
+City(
+    name='City of London',
+    country='England',
+    year=None,
+    latitude=51.507222,
+    longitude=-0.1275
+)
+
+>>> print(graph)
+Graph with 70 nodes and 137 edges
