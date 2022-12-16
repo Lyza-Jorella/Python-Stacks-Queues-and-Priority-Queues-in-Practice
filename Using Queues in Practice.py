@@ -131,3 +131,30 @@ Winchester
 115 miles, Bath
 118 miles, Bristol
 
+>>> import networkx as nx
+>>> from graph import City, load_graph
+
+>>> def is_twentieth_century(year):
+...     return year and 1901 <= year <= 2000
+...
+>>> nodes, graph = load_graph("roadmap.dot", City.from_dict)
+>>> for node in nx.bfs_tree(graph, nodes["edinburgh"]):
+...     print("📍", node.name)
+...     if is_twentieth_century(node.year):
+...         print("Found:", node.name, node.year)
+...         break
+... else:
+...     print("Not found")
+...
+📍 Edinburgh
+📍 Dundee
+📍 Glasgow
+📍 Perth
+📍 Stirling
+📍 Carlisle
+📍 Newcastle upon Tyne
+📍 Aberdeen
+📍 Inverness
+📍 Lancaster
+Found: Lancaster 1937
+
