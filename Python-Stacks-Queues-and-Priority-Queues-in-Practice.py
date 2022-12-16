@@ -104,5 +104,15 @@ class Stack(Queue):
 >>> fruits
 ['apple', 'orange', 'banana']
 
+>>> from heapq import heappop
+
+>>> heappop(fruits)
+'apple'
+
+>>> fruits
+['banana', 'orange']
+
+
+
 
 
