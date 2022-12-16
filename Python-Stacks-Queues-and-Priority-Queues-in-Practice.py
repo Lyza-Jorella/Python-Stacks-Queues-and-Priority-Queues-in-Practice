@@ -62,3 +62,12 @@ class Queue:
 
 >>> len(fifo)
 0
+
+# queues.py
+
+# ...
+
+class Stack(Queue):
+    def dequeue(self):
+        return self._elements.pop()
+
