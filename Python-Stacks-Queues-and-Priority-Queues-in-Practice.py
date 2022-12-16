@@ -153,6 +153,20 @@ class PriorityQueue:
 >>> messages.dequeue()
 (1, 'Radio station tuned in')
 
+# queues.py
+
+# ...
+
+class PriorityQueue:
+    def __init__(self):
+        self._elements = []
+
+    def enqueue_with_priority(self, priority, value):
+        heappush(self._elements, (-priority, value))
+
+    def dequeue(self):
+        return heappop(self._elements)[1]
+
 
 
 
