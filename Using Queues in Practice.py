@@ -65,3 +65,24 @@ City(
 
 >>> print(graph)
 Graph with 70 nodes and 137 edges
+
+>> > for neighbor in graph.neighbors(nodes["london"]):
+    ...
+    print(neighbor.name)
+...
+Bath
+Brighton & Hove
+Bristol
+Cambridge
+Canterbury
+Chelmsford
+Coventry
+Oxford
+Peterborough
+Portsmouth
+Southampton
+Southend - on - Sea
+St
+Albans
+Westminster
+Winchester
