@@ -324,3 +324,48 @@ def connected(graph, source, destination):
 False
 >>> connected(graph, nodes["belfast"], nodes["derry"])
 True
+
+>>> import networkx as nx
+>>> from graph import City, load_graph
+
+>>> def is_twentieth_century(year):
+...     return year and 1901 <= year <= 2000
+...
+>>> nodes, graph = load_graph("roadmap.dot", City.from_dict)
+>>> for node in nx.dfs_tree(graph, nodes["edinburgh"]):
+...     print("📍", node.name)
+...     if is_twentieth_century(node.year):
+...         print("Found:", node.name, node.year)
+...         break
+... else:
+...     print("Not found")
+...
+📍 Edinburgh
+📍 Dundee
+📍 Aberdeen
+📍 Inverness
+📍 Perth
+📍 Stirling
+📍 Glasgow
+📍 Carlisle
+📍 Lancaster
+Found: Lancaster 1937
+
+# graph.py
+
+from queues import Queue, Stack
+
+# ...
+
+def depth_first_traverse(graph, source, order_by=None):
+    stack = Stack(source)
+    visited = set()
+    while stack:
+        if (node := stack.dequeue()) not in visited:
+            yield node
+            visited.add(node)
+            neighbors = list(graph.neighbors(node))
+            if order_by:
+                neighbors.sort(key=order_by)
+            for neighbor in reversed(neighbors):
+                stack.enqueue(neighbor)
