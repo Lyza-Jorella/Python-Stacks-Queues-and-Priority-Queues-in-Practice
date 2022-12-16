@@ -198,6 +198,11 @@ TypeError: '<' not supported between instances of 'Message' and 'Message'
 >>> messages.enqueue_with_priority(CRITICAL, wipers)
 >>> messages.enqueue_with_priority(IMPORTANT, hazard_lights)
 
+>>> messages.enqueue_with_priority(CRITICAL, Message("ABS engaged"))
+Traceback (most recent call last):
+  ...
+TypeError: '<' not supported between instances of 'Message' and 'Message'
+
 
 
 
