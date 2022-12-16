@@ -86,3 +86,23 @@ St
 Albans
 Westminster
 Winchester
+
+>>> for neighbor, weights in graph[nodes["london"]].items():
+...     print(weights["distance"], neighbor.name)
+...
+115 Bath
+53 Brighton & Hove
+118 Bristol
+61 Cambridge
+62 Canterbury
+40 Chelmsford
+100 Coventry
+58 Oxford
+85 Peterborough
+75 Portsmouth
+79 Southampton
+42 Southend-on-Sea
+25 St Albans
+1 Westminster
+68 Winchester
+
