@@ -81,4 +81,17 @@ class Stack(Queue):
 2nd
 1st
 
+>>> lifo = []
+
+>>> lifo.append("1st")
+>>> lifo.append("2nd")
+>>> lifo.append("3rd")
+
+>>> lifo.pop()
+'3rd'
+>>> lifo.pop()
+'2nd'
+>>> lifo.pop()
+'1st'
+
 
