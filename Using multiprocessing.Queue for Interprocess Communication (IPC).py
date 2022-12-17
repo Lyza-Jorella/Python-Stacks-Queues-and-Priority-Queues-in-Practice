@@ -80,3 +80,25 @@ def reverse_md5(hash_value, alphabet=ascii_lowercase, max_length=6):
                 return text_bytes.decode("utf-8")
 
 # ...
+
+# multiprocess_queue.py
+
+import multiprocessing
+
+# ...
+
+class Worker(multiprocessing.Process):
+    def __init__(self, queue_in, queue_out, hash_value):
+        super().__init__(daemon=True)
+        self.queue_in = queue_in
+        self.queue_out = queue_out
+        self.hash_value = hash_value
+
+    def run(self):
+        while True:
+            job = self.queue_in.get()
+            if plaintext := job(self.hash_value):
+                self.queue_out.put(plaintext)
+                break
+
+# ...
