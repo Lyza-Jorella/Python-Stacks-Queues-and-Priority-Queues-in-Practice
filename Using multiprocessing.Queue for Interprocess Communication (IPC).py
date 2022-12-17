@@ -20,3 +20,16 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# multiprocess_queue.py
+
+# ...
+
+def chunk_indices(length, num_chunks):
+    start = 0
+    while num_chunks > 0:
+        num_chunks = min(num_chunks, length)
+        chunk_size = round(length / num_chunks)
+        yield start, (start := start + chunk_size)
+        length -= chunk_size
+        num_chunks -= 1
