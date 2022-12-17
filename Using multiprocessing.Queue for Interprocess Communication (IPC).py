@@ -121,3 +121,43 @@ class Job:
             hashed = md5(text_bytes).hexdigest()
             if hashed == hash_value:
                 return text_bytes.decode("utf-8")
+
+# multiprocess_queue.py
+
+import argparse
+
+# ...
+
+def main(args):
+    queue_in = multiprocessing.Queue()
+    queue_out = multiprocessing.Queue()
+
+    workers = [
+        Worker(queue_in, queue_out, args.hash_value)
+        for _ in range(args.num_workers)
+    ]
+
+    for worker in workers:
+        worker.start()
+
+    for text_length in range(1, args.max_length + 1):
+        combinations = Combinations(ascii_lowercase, text_length)
+        for indices in chunk_indices(len(combinations), len(workers)):
+            queue_in.put(Job(combinations, *indices))
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("hash_value")
+    parser.add_argument("-m", "--max-length", type=int, default=6)
+    parser.add_argument(
+        "-w",
+        "--num-workers",
+        type=int,
+        default=multiprocessing.cpu_count(),
+    )
+    return parser.parse_args()
+
+# ...
+
+if __name__ == "__main__":
+    main(parse_args())
