@@ -33,3 +33,14 @@ def chunk_indices(length, num_chunks):
         yield start, (start := start + chunk_size)
         length -= chunk_size
         num_chunks -= 1
+
+>>> from multiprocess_queue import chunk_indices
+>>> for start, stop in chunk_indices(20, 6):
+...     print(len(r := range(start, stop)), r)
+...
+3 range(0, 3)
+3 range(3, 6)
+4 range(6, 10)
+3 range(10, 13)
+4 range(13, 17)
+3 range(17, 20)
