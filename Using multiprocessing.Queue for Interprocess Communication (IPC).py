@@ -102,3 +102,22 @@ class Worker(multiprocessing.Process):
                 break
 
 # ...
+
+# multiprocess_queue.py
+
+from dataclasses import dataclass
+
+# ...
+
+@dataclass(frozen=True)
+class Job:
+    combinations: Combinations
+    start_index: int
+    stop_index: int
+
+    def __call__(self, hash_value):
+        for index in range(self.start_index, self.stop_index):
+            text_bytes = self.combinations[index].encode("utf-8")
+            hashed = md5(text_bytes).hexdigest()
+            if hashed == hash_value:
+                return text_bytes.decode("utf-8")
