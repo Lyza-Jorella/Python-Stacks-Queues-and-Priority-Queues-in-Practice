@@ -201,3 +201,9 @@ def main(args):
         print("Unable to find a solution")
 
 # ...
+
+# multiprocess_queue.py
+
+POISON_PILL = None
+
+# ...
