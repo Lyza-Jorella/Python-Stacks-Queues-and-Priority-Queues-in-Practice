@@ -147,3 +147,15 @@ async def main(args):
         await session.close()
 
 # ...
+
+# async_queues.py
+
+# ...
+
+class Job(NamedTuple):
+    url: str
+    depth: int = 1
+
+    def __lt__(self, other):
+        if isinstance(other, Job):
+            return len(self.url) < len(other.url)
