@@ -34,3 +34,12 @@ with pika.BlockingConnection() as connection:
         on_message_callback=callback
     )
     channel.start_consuming()
+
+# publisher.py
+
+import redis
+
+with redis.Redis() as client:
+    while True:
+        message = input("Message: ")
+        client.publish("chatroom", message)
