@@ -153,5 +153,31 @@ def main(args):
     view = View(buffer, producers, consumers)
     view.animate()
 
+# thread_safe_queues.py
+
+from dataclasses import dataclass, field
+from enum import IntEnum
+
+# ...
+
+@dataclass(order=True)
+class Product:
+    priority: int
+    label: str = field(compare=False)
+
+    def __str__(self):
+        return self.label
+
+class Priority(IntEnum):
+    HIGH = 1
+    MEDIUM = 2
+    LOW = 3
+
+PRIORITIZED_PRODUCTS = (
+    Product(Priority.HIGH, ":1st_place_medal:"),
+    Product(Priority.MEDIUM, ":2nd_place_medal:"),
+    Product(Priority.LOW, ":3rd_place_medal:"),
+)
+
 
 
